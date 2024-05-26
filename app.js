@@ -9,7 +9,7 @@ const equalsButton = document.querySelector('.buttonEquals')
 let firstValue = '';
 let secondValue = '';
 let operatorValue = '';
-
+let isResult = '';
 /*------------------------ Cached Element References ------------------------*/
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -56,7 +56,7 @@ equalsButton.addEventListener('click', (event) => {
 
 const calculatorOperation = (firstValue, operatorValue, secondValue) => {
     if (operatorValue === '+') {
-        return firstValue + secondValue;
+        return parseInt(firstValue) + parseInt(secondValue);
     } else if (operatorValue === '-') {
         return firstValue - secondValue;
     } else if (operatorValue === '*') {
