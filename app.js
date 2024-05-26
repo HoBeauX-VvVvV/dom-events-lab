@@ -1,22 +1,49 @@
 /*-------------------------------- Constants --------------------------------*/
-const buttons = document.querySelectorAll('.button');
-console.log('button');
-
-/*buttons.forEach((button) => {
-    button.addEventListener('click', (event) => {
-      console.log(event.target.innerText);  
-    });
-});*/
+const buttons = document.querySelectorAll('.buttonNumber');
+const operatorButtons = document.querySelectorAll('.buttonOperator');
 const displayElement = document.querySelector('.display');
-let firstValue = 0;
-let secondValue = 0;
-let operatorValue = '';
-const calculator = document.querySelector('#calculator')
-const operatorButtons= document.querySelector('.buttonOperator')
 const equalsButton = document.querySelector('.buttonEquals')
 
-console.dir('equalsButton')
+let firstValue = '';
+let secondValue = '';
+let operatorValue = '';
 
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+    value = event.target.innerText;
+    displayElement.textContent += value;
+    if (operatorValue === '') {
+        firstValue += value; 
+        console.log(`${firstValue} one`);
+    } else {
+        secondValue += value;
+        console.log(`${secondValue} two`);
+    }    
+    });
+});
+
+
+operatorButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+    operatorValue = event.target.innerText;
+    displayElement.textContent = operatorValue;
+    console.log(operatorValue);
+   });
+});
+
+equalsButton.addEventListener('click', (event) => {
+     value2 = event.target.innerText;
+     displayElement.textContent += value2;
+     secondValue += value2;
+});
+
+
+
+
+//const calculator = document.querySelector('#calculator')
+//console.dir('equalsButton')
+/*
 calculator.addEventListener('click', (event) => {
     if (event.target.classList.contains('number')) {
         Value = event.target.innerText;
@@ -27,10 +54,10 @@ calculator.addEventListener('click', (event) => {
         displayElement.textContent = operatorValue;
     }
 }); 
-console.log(firstValue);
+//console.log(firstValue);
 
 
-//operatorButtons.forEach(button => {
+operatorButtons.forEach(button => {
 operatorButtons.addEventListener('click' , (evt) => {
  const value = button.textContent;
      if (value === 'C') {
@@ -51,7 +78,7 @@ equalsButton.addEventListener('click', (event) => {
 /*----------------------------- Event Listeners -----------------------------*/
 
 /*-------------------------------- Functions --------------------------------*/
-/*const calculatorOperation = (firstValue, operator, secondValue) => {
+const calculatorOperation = (firstValue, operator, secondValue) => {
         if (operator === '+') {
             return num1 + num2;
         } else if (operator === '-') {
@@ -62,5 +89,5 @@ equalsButton.addEventListener('click', (event) => {
             return num1 / num2;
         }
     };
-*/
+
 //console.log(calculatorOperation(15, '/', 5));
