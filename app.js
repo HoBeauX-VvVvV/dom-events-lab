@@ -11,31 +11,53 @@ let operatorValue = '';
 
 buttons.forEach((button) => {
     button.addEventListener('click', (event) => {
+
     value = event.target.innerText;
     displayElement.textContent += value;
     if (operatorValue === '') {
         firstValue += value; 
-        console.log(`${firstValue} one`);
+        //console.log(`${firstValue} one`);
     } else {
+        //displayElement.textContent = '';
         secondValue += value;
-        console.log(`${secondValue} two`);
+        //console.log(`${secondValue} two`);
     }    
     });
 });
 
-
 operatorButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
-    operatorValue = event.target.innerText;
+    displayElement.textContent = '';
+    operatorValue = event.target.innerText
+    if (operatorValue === 'C') {
+        firstValue = '';
+        secondValue = '';
+        operatorValue = '';
+        displayElement.textContent = '';
+    } else {
     displayElement.textContent = operatorValue;
     console.log(operatorValue);
+    }
    });
 });
 
+const calculatorOperation = (firstValue, operatorValue, secondValue) => {
+    if (operatorValue === '+') {
+        return firstValue + secondValue;
+    } else if (operatorValue === '-') {
+        return firstValue - secondValue;
+    } else if (operatorValue === '*') {
+        return firstValue * secondValue;
+    } else if (operatorValue === '/') {
+        return firstValue / secondValue;
+    }
+};
+
+//console.log(calculatorOperation(15, '*', 15));
+
 equalsButton.addEventListener('click', (event) => {
-     value2 = event.target.innerText;
-     displayElement.textContent += value2;
-     secondValue += value2;
+   const result = calculatorOperation(firstValue, operatorValue, secondValue);
+   displayElement.textContent = result;
 });
 
 
@@ -78,16 +100,6 @@ equalsButton.addEventListener('click', (event) => {
 /*----------------------------- Event Listeners -----------------------------*/
 
 /*-------------------------------- Functions --------------------------------*/
-const calculatorOperation = (firstValue, operator, secondValue) => {
-        if (operator === '+') {
-            return num1 + num2;
-        } else if (operator === '-') {
-            return num1 - num2;
-        } else if (operator === '*') {
-            return num1 * num2;
-        } else if (operator === '/') {
-            return num1 / num2;
-        }
-    };
+
 
 //console.log(calculatorOperation(15, '/', 5));
