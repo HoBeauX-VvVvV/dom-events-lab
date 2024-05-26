@@ -7,22 +7,43 @@ console.log('button');
       console.log(event.target.innerText);  
     });
 });*/
-const display = document.querySelector('.display');
+const displayElement = document.querySelector('.display');
 let firstValue = 0;
 let secondValue = 0;
 let operatorValue = '';
 const calculator = document.querySelector('#calculator')
-console.log('calculator')
+const operatorButtons= document.querySelector('.buttonOperator')
+const equalsButton = document.querySelector('.buttonEquals')
+
+console.dir('equalsButton')
 
 calculator.addEventListener('click', (event) => {
     if (event.target.classList.contains('number')) {
-        firstValue = event.target.innerText;
-        console.log(firstValue);
+        Value = event.target.innerText;
+        displayElement.textContent += Value;
     } else if (event.target.classList.contains ('operator')) {
+        firstValue = displayElement.textContent;
         operatorValue = event.target.innerText;
-        console.log(operatorValue);
+        displayElement.textContent = operatorValue;
     }
+}); 
+console.log(firstValue);
+
+
+//operatorButtons.forEach(button => {
+operatorButtons.addEventListener('click' , (evt) => {
+ const value = button.textContent;
+     if (value === 'C') {
+        clear();
+     } 
+      firstValue = display.textContent;
+    })
+//})
+equalsButton.addEventListener('click', (event) => {
+   equals = event.target.innerText;
+    displayElement.textContent = (equals)
 });
+
 /*-------------------------------- Variables --------------------------------*/
   
 /*------------------------ Cached Element References ------------------------*/
@@ -30,7 +51,7 @@ calculator.addEventListener('click', (event) => {
 /*----------------------------- Event Listeners -----------------------------*/
 
 /*-------------------------------- Functions --------------------------------*/
-const calculatorOperation = (num1, operator, num2) => {
+/*const calculatorOperation = (firstValue, operator, secondValue) => {
         if (operator === '+') {
             return num1 + num2;
         } else if (operator === '-') {
@@ -41,3 +62,5 @@ const calculatorOperation = (num1, operator, num2) => {
             return num1 / num2;
         }
     };
+*/
+//console.log(calculatorOperation(15, '/', 5));
