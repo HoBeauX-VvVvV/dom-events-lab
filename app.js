@@ -9,7 +9,7 @@ const equalsButton = document.querySelector('.buttonEquals')
 let firstValue = '';
 let secondValue = '';
 let operatorValue = '';
-let isResult = '';
+let result = '';
 /*------------------------ Cached Element References ------------------------*/
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -45,7 +45,7 @@ operatorButtons.forEach((button) => {
 });
 
 equalsButton.addEventListener('click', (event) => {
-   const result = calculatorOperation(firstValue, operatorValue, secondValue);
+   result = calculatorOperation(firstValue, operatorValue, secondValue);
    displayElement.textContent = result;
    firstValue = result;
    secondValue = '';
